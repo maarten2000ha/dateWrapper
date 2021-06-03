@@ -8,12 +8,12 @@ export const toMoment = (date) => {
     return moment.utc(date)
 }
 
-export const add = (date, amount, format) => {
-    return moment.utc(date).add(amount, format).toISOString()
+export const add = (date, duration) => {
+    return moment.utc(date).add(duration).toISOString()
 }
 
-export const subtract = (date, amount, format) => {
-    return moment.utc(date).add(amount, format).toISOString();
+export const subtract = (date, duration) => {
+    return moment.utc(date).subtract(duration).toISOString();
 }
 
 export const startOfWeek = (date) => {
