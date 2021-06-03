@@ -18,12 +18,12 @@ export default class momentWrapper implements WrapperInterface<moment.Moment> {
         return this.date
     }
 
-    add(amount, format) {
-        return this.date.add(amount, format).toISOString()
+    add(duration) {
+        return this.date.add(duration).toISOString()
     }
 
-    subtract(amount, format) {
-        return this.date.add(amount, format).toISOString();
+    subtract(duration) {
+        return this.date.add(duration).toISOString();
     }
 
     startOfWeek() {

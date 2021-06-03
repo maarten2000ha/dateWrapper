@@ -5,8 +5,8 @@ export default interface WrapperInterface<Type> {
     toString(): String
     startOfWeek(): String
     endOfWeek(): String
-    add(amount: number, format: string): String     //format might be changed to an enum
-    subtract(amount: number, format: string): String
+    add(duration): String     //format might be changed to an enum
+    subtract(duration): String
     toDate(): Date
     isSameOrBefore(date: String): boolean
     isSameOrAfter(date: String): boolean
