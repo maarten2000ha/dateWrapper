@@ -1,24 +1,33 @@
-import MomentWrapper from "./MomentWrapper";
+import {
+    add,
+    endOfWeek,
+    isAfter,
+    isBefore, isSameOrAfter, isSameOrBefore,
+    startOfWeek,
+    subtract,
+    toDate,
+    toMoment
+} from "./MomentWrapper";
 
 
-const dateWrapper = new MomentWrapper("2011-10-05T14:48:00.000Z")
-const secondDate = new MomentWrapper("2021-06-03T07:30:00.000Z")
+const firstDate = "2011-10-05T14:48:00.000Z"
+const secondDate = "2021-06-03T07:30:00.000Z"
 
 console.group("momentWrapper functions")
 
 console.log({
-    dateWrapper,
-    toDate: dateWrapper.toDate(),
-    toMoment: dateWrapper.toMoment(),
-    add: dateWrapper.add(1, "days"),
-    subtract: dateWrapper.subtract(1, "days"),
-    startOfWeek: dateWrapper.startOfWeek(),
-    endOfWeek: dateWrapper.endOfWeek(),
+    firstDate,
+    toDate: toDate(firstDate),
+    toMoment: toMoment(firstDate),
+    add: add(firstDate,1, "days"),
+    subtract: subtract(firstDate,1, "days"),
+    startOfWeek: startOfWeek(firstDate),
+    endOfWeek: endOfWeek(firstDate),
     secondDate,
-    isAfter: dateWrapper.isAfter(secondDate.stringDate),
-    isBefore: dateWrapper.isBefore(secondDate.stringDate),
-    isSameOrAfter: dateWrapper.isSameOrAfter(secondDate.stringDate),
-    isSameOrBefore: dateWrapper.isSameOrBefore(secondDate.stringDate)
+    isAfter: isAfter(firstDate, secondDate),
+    isBefore: isBefore(firstDate, secondDate),
+    isSameOrAfter: isSameOrAfter(firstDate, secondDate),
+    isSameOrBefore: isSameOrBefore(firstDate, secondDate)
 })
 
 console.groupEnd()

@@ -1,53 +1,41 @@
 import moment from "moment";
-import WrapperInterface from "./WrapperInterface";
 
-export default class momentWrapper implements WrapperInterface<moment.Moment> {
-    date: moment.Moment;
-    stringDate: string;
+export const toDate = (date) => {
+    return new Date(date);
+}
 
-    constructor(date: string){
-        this.date = moment.utc(date)
-        this.stringDate = date
-    }
+export const toMoment = (date) => {
+    return moment.utc(date)
+}
 
-    toDate() {
-        return this.date.toDate();
-    }
+export const add = (date, amount, format) => {
+    return moment.utc(date).add(amount, format).toISOString()
+}
 
-    toMoment(): moment.Moment {
-        return this.date
-    }
+export const subtract = (date, amount, format) => {
+    return moment.utc(date).add(amount, format).toISOString();
+}
 
-    add(amount, format) {
-        return this.date.add(amount, format).toISOString()
-    }
+export const startOfWeek = (date) => {
+    return moment.utc(date).startOf("isoWeek").toISOString()
+}
 
-    subtract(amount, format) {
-        return this.date.add(amount, format).toISOString();
-    }
+export const endOfWeek = (date) => {
+    return moment.utc(date).endOf("isoWeek").toISOString()
+}
 
-    startOfWeek() {
-        return this.date.startOf("isoWeek").toISOString()
-    }
+export const isAfter = (firstDate, secondDate) => {
+    return moment.utc(firstDate).isAfter(secondDate);
+}
 
-    endOfWeek() {
-        return this.date.endOf("isoWeek").toISOString()
-    }
+export const isBefore = (firstDate, secondDate) => {
+    return moment.utc(firstDate).isBefore(secondDate);
+}
 
-    isAfter(date: string) {
-        return this.date.isAfter(date);
-    }
+export const isSameOrAfter = (firstDate, secondDate) => {
+    return moment.utc(firstDate).isSameOrAfter(secondDate);
+}
 
-    isBefore(date: string) {
-        return this.date.isBefore(date);
-    }
-
-    isSameOrAfter(date: string) {
-        return this.date.isSameOrAfter(date);
-    }
-
-    isSameOrBefore(date: string) {
-        return this.date.isSameOrBefore(date);
-    }
-
+export const isSameOrBefore = (firstDate, secondDate) => {
+    return moment.utc(firstDate).isSameOrBefore(secondDate);
 }
