@@ -1,4 +1,4 @@
-export default interface WrapperInterface<Type> {
+export default interface IWrapperInterface<Type> {
     date: Type
     stringDate: String
 

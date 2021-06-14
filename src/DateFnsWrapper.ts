@@ -1,7 +1,7 @@
 import { add as dateAdd, formatISO, sub, startOfISOWeek, endOfISOWeek, isAfter as dateIsAfter, isBefore as dateIsBefore, isSameSecond} from "date-fns"
-import WrapperInterface from "./WrapperInterface"
+import IWrapperInterface from "./IWrapperInterface"
 
-export default class DateFnsWrapper implements WrapperInterface<Date> {
+export default class DateFnsWrapper implements IWrapperInterface<Date> {
     date: Date
     stringDate: string
 

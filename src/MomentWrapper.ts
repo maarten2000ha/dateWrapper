@@ -1,7 +1,7 @@
 import moment from "moment";
-import WrapperInterface from "./WrapperInterface";
+import IWrapperInterface from "./IWrapperInterface";
 
-export default class momentWrapper implements WrapperInterface<moment.Moment> {
+export default class momentWrapper implements IWrapperInterface<moment.Moment> {
     date: moment.Moment;
     stringDate: string;
 
@@ -19,19 +19,23 @@ export default class momentWrapper implements WrapperInterface<moment.Moment> {
     }
 
     add(duration) {
-        return this.date.add(duration).toISOString()
+        const date = this.date.clone()
+        return date.add(duration).toISOString()
     }
 
     subtract(duration) {
-        return this.date.add(duration).toISOString();
+        const date = this.date.clone()
+        return date.subtract(duration).toISOString();
     }
 
     startOfWeek() {
-        return this.date.startOf("isoWeek").toISOString()
+        const date = this.date.clone()
+        return date.startOf("isoWeek").toISOString()
     }
 
     endOfWeek() {
-        return this.date.endOf("isoWeek").toISOString()
+        const date = this.date.clone()
+        return date.endOf("isoWeek").toISOString()
     }
 
     isAfter(date: string) {
