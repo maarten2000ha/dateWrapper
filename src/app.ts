@@ -9,7 +9,7 @@ import {
     subtract,
     toDate,
     toMoment
-} from "./MomentWrapper";
+} from "./MomentWrapper"
 /*import {
     add,
     endOfWeek ,
@@ -26,7 +26,7 @@ import {
 const firstDate = "2011-10-05T14:48:00.000Z"
 const secondDate = "2021-06-03T07:30:00.000Z"
 
-console.group(" wrapper functions")
+console.group("wrapper functions")
 
 console.log({
     firstDate,

@@ -1,4 +1,4 @@
-import moment from "moment";
+import moment from "moment"
 
 export const toDate = (date) => {
     return new Date(date);
@@ -12,8 +12,16 @@ export const add = (date, duration) => {
     return moment.utc(date).add(duration).toISOString()
 }
 
+export const addTime = (time, duration) => {
+    return moment.utc(time, "HH:mm").add(duration).format("HH:mm")
+}
+
 export const subtract = (date, duration) => {
     return moment.utc(date).subtract(duration).toISOString();
+}
+
+export const subtractTime = (time, duration) => {
+    return moment.utc(time, "HH:mm").subtract(duration).format("HH:mm")
 }
 
 export const startOfWeek = (date) => {
@@ -38,4 +46,12 @@ export const isSameOrAfter = (firstDate, secondDate) => {
 
 export const isSameOrBefore = (firstDate, secondDate) => {
     return moment.utc(firstDate).isSameOrBefore(secondDate);
+}
+
+export const isValid = (date) => {
+    return moment.utc(date).isValid()
+}
+
+export const isValidTime = (time) => {
+    return moment.utc(time, "HH:mm").isValid()
 }
