@@ -9,19 +9,7 @@ import {
     subtract,
     toDate,
     toMoment
-} from "./MomentWrapper"
-/*import {
-    add,
-    endOfWeek ,
-    isAfter,
-    isBefore,
-    isSameOrAfter,
-    isSameOrBefore,
-    startOfWeek,
-    subtract,
-    toDate,
-} from "./DateFnsWrapper"*/
-
+} from "./DateWrapper"
 
 const firstDate = "2011-10-05T14:48:00.000Z"
 const secondDate = "2021-06-03T07:30:00.000Z"

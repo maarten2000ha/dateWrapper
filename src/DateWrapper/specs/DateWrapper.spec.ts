@@ -14,23 +14,7 @@ import {
     isValid,
     isValidTime,
     timeToDate
-} from "../MomentWrapper"
-// import {
-//     add,
-//     addTime,
-//     endOfWeek,
-//     isAfter,
-//     isBefore,
-//     isSameOrAfter,
-//     isSameOrBefore,
-//     isValid,
-//     isValidTime,
-//     startOfWeek,
-//     subtract,
-//     subtractTime,
-//     timeToDate,
-//     toDate
-// } from "../DateFnsWrapper"
+} from "../index"
 
 
 describe("DateWrapper", () => {
