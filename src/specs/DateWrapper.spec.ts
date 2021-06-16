@@ -1,20 +1,3 @@
-// import {
-//     add,
-//     addTime,
-//     endOfWeek,
-//     isAfter,
-//     isBefore,
-//     isSameOrAfter,
-//     isSameOrBefore,
-//     startOfWeek,
-//     subtract,
-//     subtractTime,
-//     toDate,
-//     toMoment,
-//     isValid,
-//     isValidTime,
-//     timeToDate
-// } from "../MomentWrapper"
 import {
     add,
     addTime,
@@ -23,14 +6,31 @@ import {
     isBefore,
     isSameOrAfter,
     isSameOrBefore,
-    isValid,
-    isValidTime,
     startOfWeek,
     subtract,
     subtractTime,
-    timeToDate,
-    toDate
-} from "../DateFnsWrapper"
+    toDate,
+    toMoment,
+    isValid,
+    isValidTime,
+    timeToDate
+} from "../MomentWrapper"
+// import {
+//     add,
+//     addTime,
+//     endOfWeek,
+//     isAfter,
+//     isBefore,
+//     isSameOrAfter,
+//     isSameOrBefore,
+//     isValid,
+//     isValidTime,
+//     startOfWeek,
+//     subtract,
+//     subtractTime,
+//     timeToDate,
+//     toDate
+// } from "../DateFnsWrapper"
 
 
 describe("DateWrapper", () => {
@@ -110,11 +110,12 @@ describe("DateWrapper", () => {
         expect(result).toBe(false)
     })
 
-    it("validates time and returns date", () => {
+    it("validates time and returns date object", () => {
         const today = new Date()
         today.setUTCHours(12, 0, 0,0)
         const result = timeToDate(time)
         expect(typeof result).toBe("object")
         expect(result).toEqual(today)
     })
+
 })
