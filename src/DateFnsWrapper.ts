@@ -7,7 +7,9 @@ import {
     isSameSecond,
     isValid as dateIsValid,
     setHours,
+    setMilliseconds,
     setMinutes,
+    setSeconds,
     startOfISOWeek,
     sub
 } from "date-fns"
@@ -15,6 +17,17 @@ import {zonedTimeToUtc} from "date-fns-tz"
 
 const getUtcDate = (date) => {
     return zonedTimeToUtc(date, "utc")
+}
+
+export const timeToDate = (time, setToUtc = true) => {
+    if (isValidTime(time)) throw new Error("Invalid Time")
+    const today = new Date()
+    let date = setHours(today, time.substring(0, 2))
+    date = setMinutes(date, time.substring(3, 5))
+    date = setSeconds(date, 0)
+    date = setMilliseconds(date, 0)
+    if (setToUtc) date = getUtcDate(date)
+    return date
 }
 
 export const toDate = (date) => {
@@ -27,11 +40,10 @@ export const add = (date, duration) => {
 }
 
 export const addTime = (time, duration) => {
-    if (isValidTime(time)) throw new Error("Invalid Time")
-    const today = new Date()
-    let date = setHours(today, time.substring(0, 2))
-    date = setMinutes(date, time.substring(3, 5))
-    return format(dateAdd(date, duration), "HH:mm")
+    const date = timeToDate(time, false)
+    const addedDate = dateAdd(date, duration)
+    console.log({date, time, addedDate})
+    return format(addedDate, "HH:mm")
 }
 
 export const subtract = (date, duration) => {
@@ -40,11 +52,9 @@ export const subtract = (date, duration) => {
 }
 
 export const subtractTime = (time, duration) => {
-    if (isValidTime(time)) throw new Error("Invalid Time")
-    const today = new Date()
-    let date = setHours(today, time.substring(0, 2))
-    date = setMinutes(date, time.substring(3, 5))
-    return format(sub(date, duration), "HH:mm")
+    const date = timeToDate(time, false)
+    const subtractedDate = sub(date, duration)
+    return format(subtractedDate, "HH:mm")
 }
 
 export const startOfWeek = (date) => {

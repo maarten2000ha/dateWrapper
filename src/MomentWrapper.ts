@@ -1,5 +1,13 @@
 import moment from "moment"
 
+export const timeToDate = (time) => {
+    const date = moment.utc(time, "HH:mm").toDate()
+    if (!isValid(date)){
+        throw new Error(`${time} is invalid`)
+    }
+    return date
+}
+
 export const toDate = (date) => {
     return new Date(date);
 }

@@ -12,7 +12,8 @@
 //     toDate,
 //     toMoment,
 //     isValid,
-//     isValidTime
+//     isValidTime,
+//     timeToDate
 // } from "../MomentWrapper"
 import {
     add,
@@ -22,11 +23,13 @@ import {
     isBefore,
     isSameOrAfter,
     isSameOrBefore,
-    startOfWeek,
-    subtract, subtractTime,
-    toDate,
     isValid,
-    isValidTime
+    isValidTime,
+    startOfWeek,
+    subtract,
+    subtractTime,
+    timeToDate,
+    toDate
 } from "../DateFnsWrapper"
 
 
@@ -105,5 +108,13 @@ describe("DateWrapper", () => {
     it("returns false when time is invalid", () => {
         const result = isValidTime("25:00")
         expect(result).toBe(false)
+    })
+
+    it("validates time and returns date", () => {
+        const today = new Date()
+        today.setUTCHours(12, 0, 0,0)
+        const result = timeToDate(time)
+        expect(typeof result).toBe("object")
+        expect(result).toEqual(today)
     })
 })
