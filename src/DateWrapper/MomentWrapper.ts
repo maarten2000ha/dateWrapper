@@ -1,4 +1,5 @@
-import moment from "moment"
+import moment, {Moment} from "moment"
+import {TDuration} from "./types";
 
 /**
  * converts time into a date object
@@ -7,9 +8,9 @@ import moment from "moment"
  * @param {boolean} setToUtc
  * @returns {Date}
  */
-export const timeToDate = (time) => {
+export const timeToDate = (time: string): Date => {
     const date = moment.utc(time, "HH:mm").toDate()
-    if (!isValid(date)){
+    if (!isValid(date.toISOString())){
         throw new Error(`${time} is invalid`)
     }
     return date
@@ -21,17 +22,17 @@ export const timeToDate = (time) => {
  * @param {string} date
  * @returns {Date}
  */
-export const toDate = (date) => {
+export const toDate = (date: string): Date => {
     return new Date(date);
 }
 
 /**
  * creates Moment object from (iso) string
  *
- * @param date
- * @returns {moment}
+ * @param {string} date
+ * @returns {Moment}
  */
-export const toMoment = (date) => {
+export const toMoment = (date: string): Moment => {
     return moment.utc(date)
 }
 
@@ -42,7 +43,7 @@ export const toMoment = (date) => {
  * @param {object} duration
  * @returns {string} ISO string
  */
-export const add = (date, duration) => {
+export const add = (date: string, duration: TDuration): string => {
     return moment.utc(date).add(duration).toISOString()
 }
 
@@ -53,7 +54,7 @@ export const add = (date, duration) => {
  * @param {object} duration
  * @returns {string} ISO string
  */
-export const addTime = (time, duration) => {
+export const addTime = (time: string, duration: TDuration): string => {
     return moment.utc(time, "HH:mm").add(duration).format("HH:mm")
 }
 
@@ -64,7 +65,7 @@ export const addTime = (time, duration) => {
  * @param {object} duration
  * @returns {string} ISO string
  */
-export const subtract = (date, duration) => {
+export const subtract = (date: string, duration: TDuration): string => {
     return moment.utc(date).subtract(duration).toISOString();
 }
 
@@ -75,7 +76,7 @@ export const subtract = (date, duration) => {
  * @param {object} duration
  * @returns {string} ISO string
  */
-export const subtractTime = (time, duration) => {
+export const subtractTime = (time: string, duration: TDuration): string => {
     return moment.utc(time, "HH:mm").subtract(duration).format("HH:mm")
 }
 
@@ -85,7 +86,7 @@ export const subtractTime = (time, duration) => {
  * @param {string} date
  * @returns {string} ISO string
  */
-export const startOfWeek = (date) => {
+export const startOfWeek = (date: string): string => {
     return moment.utc(date).startOf("isoWeek").toISOString()
 }
 
@@ -95,7 +96,7 @@ export const startOfWeek = (date) => {
  * @param {string} date
  * @returns {string} ISO string
  */
-export const endOfWeek = (date) => {
+export const endOfWeek = (date: string): string => {
     return moment.utc(date).endOf("isoWeek").toISOString()
 }
 
@@ -103,10 +104,10 @@ export const endOfWeek = (date) => {
  * checks if first given ISO string is after the second ISO string
  *
  * @param {string} firstDate
- * @param {string} SecondDate
+ * @param {string} secondDate
  * @returns {boolean}
  */
-export const isAfter = (firstDate, secondDate) => {
+export const isAfter = (firstDate: string, secondDate: string): boolean => {
     return moment.utc(firstDate).isAfter(secondDate);
 }
 
@@ -114,10 +115,10 @@ export const isAfter = (firstDate, secondDate) => {
  * checks if first given ISO string is before the second ISO string
  *
  * @param {string} firstDate
- * @param {string} SecondDate
+ * @param {string} secondDate
  * @returns {boolean}
  */
-export const isBefore = (firstDate, secondDate) => {
+export const isBefore = (firstDate: string, secondDate: string): boolean => {
     return moment.utc(firstDate).isBefore(secondDate);
 }
 
@@ -125,10 +126,10 @@ export const isBefore = (firstDate, secondDate) => {
  * checks if first given ISO string is the same or later than the second ISO string
  *
  * @param {string} firstDate
- * @param {string} SecondDate
+ * @param {string} secondDate
  * @returns {boolean}
  */
-export const isSameOrAfter = (firstDate, secondDate) => {
+export const isSameOrAfter = (firstDate: string, secondDate: string): boolean => {
     return moment.utc(firstDate).isSameOrAfter(secondDate);
 }
 
@@ -136,10 +137,10 @@ export const isSameOrAfter = (firstDate, secondDate) => {
  * checks if first given ISO string is hte same or before than the second ISO string
  *
  * @param {string} firstDate
- * @param {string} SecondDate
+ * @param {string} secondDate
  * @returns {boolean}
  */
-export const isSameOrBefore = (firstDate, secondDate) => {
+export const isSameOrBefore = (firstDate: string, secondDate: string): boolean => {
     return moment.utc(firstDate).isSameOrBefore(secondDate);
 }
 
@@ -149,7 +150,7 @@ export const isSameOrBefore = (firstDate, secondDate) => {
  * @param {string} date
  * @returns {boolean}
  */
-export const isValid = (date) => {
+export const isValid = (date: string): boolean => {
     return moment.utc(date).isValid()
 }
 
@@ -159,6 +160,6 @@ export const isValid = (date) => {
  * @param {string} time
  * @returns {boolean}
  */
-export const isValidTime = (time) => {
+export const isValidTime = (time: string): boolean => {
     return moment.utc(time, "HH:mm").isValid()
 }
